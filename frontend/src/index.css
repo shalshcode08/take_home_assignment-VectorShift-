@@ -51,20 +51,20 @@ code {
   border-bottom: 1px solid var(--black-200);
 }
 
-.toolbar__list {
+.toolbar_list {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.draggable-node {
+.draggable_node {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  flex-direction: column;
+  gap: 8px;
   min-width: 74px;
-  height: 40px;
-  padding: 8px 16px;
+  padding: 10px;
   border-radius: 6px;
   background: var(--black-900);
   color: #ffffff;
@@ -74,11 +74,11 @@ code {
   user-select: none;
 }
 
-.draggable-node:hover {
+.draggable_node:hover {
   background: var(--black-700);
 }
 
-.draggable-node:active {
+.draggable_node:active {
   cursor: grabbing;
 }
 
@@ -108,7 +108,7 @@ code {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
 }
 
-.node__header {
+.node_header {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -119,12 +119,12 @@ code {
   color: var(--black-900);
 }
 
-.node__icon {
+.node_icon {
   flex-shrink: 0;
   color: var(--black-500);
 }
 
-.node__body {
+.node_body {
   display: flex;
   flex-direction: column;
   gap: 9px;
@@ -137,14 +137,14 @@ code {
   gap: 3px;
 }
 
-.field__label {
+.field_label {
   font-size: 11px;
   font-weight: 500;
   color: var(--black-500);
 }
 
-.field__input,
-.field__select {
+.field_input,
+.field_select {
   width: 100%;
   padding: 5px 8px;
   font-family: inherit;
@@ -159,24 +159,32 @@ code {
     box-shadow 0.12s ease;
 }
 
-.field__input:focus,
-.field__select:focus {
+.field_input:focus,
+.field_select:focus {
   border-color: var(--black-900);
   box-shadow: 0 0 0 3px var(--black-100);
 }
 
-.field__select {
+.field_select {
   cursor: pointer;
 }
 
-.node__note {
+.field_textarea {
+  display: block;
+  min-height: 30px;
+  line-height: 1.45;
+  resize: none;
+  overflow: hidden;
+}
+
+.node_note {
   margin: 0;
   font-size: 12px;
   line-height: 1.5;
   color: var(--black-600);
 }
 
-.node__preview {
+.node_preview {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,7 +204,7 @@ code {
   z-index: 10;
 }
 
-.submit__button {
+.submit_button {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -213,11 +221,11 @@ code {
   transition: background 0.12s ease;
 }
 
-.submit__button:hover {
+.submit_button:hover {
   background: var(--black-950);
 }
 
-.submit__button:active {
+.submit_button:active {
   background: var(--black-700);
 }
 

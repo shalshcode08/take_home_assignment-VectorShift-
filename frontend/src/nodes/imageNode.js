@@ -14,6 +14,6 @@ export const ImageNode = ({ id, data }) => (
       { name: 'prompt', label: 'Prompt', type: 'text', default: 'a red panda' },
     ]}
   >
-    <div className="node__preview">preview</div>
+    <div className="node_preview">preview</div>
   </BaseNode>
 );

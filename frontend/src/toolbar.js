@@ -6,7 +6,7 @@ import { NODE_ICON } from './nodes/nodeIcons';
 
 export const PipelineToolbar = () => (
   <div className="toolbar">
-    <div className="toolbar__list">
+    <div className="toolbar_list">
       {NODES.map((node) => (
         <DraggableNode
           key={node.type}

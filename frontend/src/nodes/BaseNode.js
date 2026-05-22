@@ -12,8 +12,8 @@ const FieldRenderer = ({ field, value, onChange }) => {
   if (field.type === 'select') {
     return (
       <label className="field">
-        <span className="field__label">{field.label}</span>
-        <select className="field__select" value={value} onChange={onChange}>
+        <span className="field_label">{field.label}</span>
+        <select className="field_select" value={value} onChange={onChange}>
           {field.options.map((opt) => {
             // options accept either 'Text' or { value, label }
             const o = typeof opt === 'string' ? { value: opt, label: opt } : opt;
@@ -30,9 +30,9 @@ const FieldRenderer = ({ field, value, onChange }) => {
 
   return (
     <label className="field">
-      <span className="field__label">{field.label}</span>
+      <span className="field_label">{field.label}</span>
       <input
-        className="field__input"
+        className="field_input"
         type="text"
         value={value}
         onChange={onChange}
@@ -51,6 +51,7 @@ export const BaseNode = ({
   handles = [],
   fields = [],
   children,
+  style,
 }) => {
   // All field values live in one local state object (rule-of-hooks safe).
   const [values, setValues] = useState(() =>
@@ -71,7 +72,7 @@ export const BaseNode = ({
   const Icon = NODE_ICON[data?.nodeType];
 
   return (
-    <div className="node">
+    <div className="node" style={style}>
       {handles.map((handle) => (
         <Handle
           key={handle.id}
@@ -82,12 +83,12 @@ export const BaseNode = ({
         />
       ))}
 
-      <div className="node__header">
-        {Icon && <Icon className="node__icon" size={14} strokeWidth={2} />}
+      <div className="node_header">
+        {Icon && <Icon className="node_icon" size={14} strokeWidth={2} />}
         <span>{title}</span>
       </div>
 
-      <div className="node__body">
+      <div className="node_body">
         {fields.map((field) => (
           <FieldRenderer
             key={field.name}
