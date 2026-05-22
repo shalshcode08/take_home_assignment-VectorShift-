@@ -1,22 +1,19 @@
 // BaseNode.js
-// Shared abstraction for all pipeline nodes — renders the card shell, title,
-// connection Handles, and standard fields from declarative props. Custom UI
-// can be passed via `children`.
 
-import { useState } from 'react';
-import { Handle } from 'reactflow';
-import { NODE_ICON } from './nodeIcons';
+import { useState } from "react";
+import { Handle } from "reactflow";
+import { NODE_ICON } from "./nodeIcons";
 
-// Renders one editable field based on its declared `type`.
 const FieldRenderer = ({ field, value, onChange }) => {
-  if (field.type === 'select') {
+  if (field.type === "select") {
     return (
       <label className="field">
         <span className="field_label">{field.label}</span>
         <select className="field_select" value={value} onChange={onChange}>
           {field.options.map((opt) => {
             // options accept either 'Text' or { value, label }
-            const o = typeof opt === 'string' ? { value: opt, label: opt } : opt;
+            const o =
+              typeof opt === "string" ? { value: opt, label: opt } : opt;
             return (
               <option key={o.value} value={o.value}>
                 {o.label}
@@ -41,9 +38,6 @@ const FieldRenderer = ({ field, value, onChange }) => {
   );
 };
 
-// handles: [{ type, position, id, style? }]  — `id` is the short port name;
-//          the full handle id becomes `${nodeId}-${id}`.
-// fields:  [{ name, label, type, default, options? }]
 export const BaseNode = ({
   id,
   data,
@@ -53,12 +47,11 @@ export const BaseNode = ({
   children,
   style,
 }) => {
-  // All field values live in one local state object (rule-of-hooks safe).
   const [values, setValues] = useState(() =>
     Object.fromEntries(
       fields.map((field) => [
         field.name,
-        data?.[field.name] ?? field.default ?? '',
+        data?.[field.name] ?? field.default ?? "",
       ]),
     ),
   );
@@ -68,7 +61,6 @@ export const BaseNode = ({
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Per-type Lucide icon shown in the header.
   const Icon = NODE_ICON[data?.nodeType];
 
   return (
