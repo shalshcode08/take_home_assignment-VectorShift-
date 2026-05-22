@@ -1,10 +1,14 @@
 // submit.js
 
-export const SubmitButton = () => {
+import { Send } from 'lucide-react';
 
-    return (
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <button type="submit">Submit</button>
-        </div>
-    );
-}
+export const SubmitButton = () => {
+  return (
+    <div className="submit">
+      <button type="submit" className="submit__button">
+        <Send size={14} strokeWidth={2} />
+        Submit
+      </button>
+    </div>
+  );
+};

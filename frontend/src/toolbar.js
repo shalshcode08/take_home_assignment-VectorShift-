@@ -1,17 +1,20 @@
 // toolbar.js
 
 import { DraggableNode } from './draggableNode';
+import { NODES } from './nodes/nodeRegistry';
+import { NODE_ICON } from './nodes/nodeIcons';
 
-export const PipelineToolbar = () => {
-
-    return (
-        <div style={{ padding: '10px' }}>
-            <div style={{ marginTop: '20px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                <DraggableNode type='customInput' label='Input' />
-                <DraggableNode type='llm' label='LLM' />
-                <DraggableNode type='customOutput' label='Output' />
-                <DraggableNode type='text' label='Text' />
-            </div>
-        </div>
-    );
-};
+export const PipelineToolbar = () => (
+  <div className="toolbar">
+    <div className="toolbar__list">
+      {NODES.map((node) => (
+        <DraggableNode
+          key={node.type}
+          type={node.type}
+          label={node.label}
+          Icon={NODE_ICON[node.type]}
+        />
+      ))}
+    </div>
+  </div>
+);
